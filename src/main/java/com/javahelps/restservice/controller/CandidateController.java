@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javahelps.restservice.entity.Candidate;
+import com.javahelps.restservice.entity.ContactSchool;
 import com.javahelps.restservice.repository.CandidateRepository;
 import com.javahelps.restservice.repository.ContactSchoolRepository;
 
@@ -24,6 +25,8 @@ public class CandidateController {
 
 	@Autowired
     private CandidateRepository repository;
+	
+	@Autowired
 	private ContactSchoolRepository repositoryContactSchool;
 
     @GetMapping
@@ -40,7 +43,12 @@ public class CandidateController {
     public void create(@RequestBody List<Candidate> candidats) {
     	repository.save(candidats);
         for (Candidate candidat : candidats) {
-        	repositoryContactSchool.save(candidat.getSchoolsContacts());
+        	for (ContactSchool contact : candidat.getSchoolsContacts()) {
+        		ContactSchool _contact = new ContactSchool();
+        		_contact.setCandidate(candidat);
+        		_contact.setSchoolName(contact.getSchoolName());
+        		repositoryContactSchool.save(_contact);
+        	}
         }
     }
 
