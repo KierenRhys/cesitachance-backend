@@ -13,27 +13,26 @@ import javax.persistence.Table;
 @Table(name="contact_school")
 public class ContactSchool {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="contact_school_id")
-    private String contactSchoolId;
+    private Integer contactSchoolId;
 	
-	@Column(name="candidate_id")
+	@ManyToOne
+	@JoinColumn(name = "candidate_id")
     private Candidate candidate;
     
 	@Column(name="school_name")
     private String schoolName;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public String getContactSchoolId() {
+	public Integer getContactSchoolId() {
 		return contactSchoolId;
 	}
 
-	public void setContactSchoolId(String contactSchoolId) {
+	public void setContactSchoolId(Integer contactSchoolId) {
 		this.contactSchoolId = contactSchoolId;
 	}
-
-	@ManyToOne
-	@JoinColumn(name = "candidate_id")
+	
 	public Candidate getCandidate() {
 		return candidate;
 	}

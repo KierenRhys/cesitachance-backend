@@ -1,10 +1,11 @@
 package com.javahelps.restservice.entity;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,6 +17,7 @@ import org.springframework.data.annotation.CreatedDate;
 @Entity
 @Table(name="candidate")
 public class Candidate {
+	
 	@Id
 	@Column(name="candidate_id")
     private String candidateId;
@@ -70,7 +72,8 @@ public class Candidate {
 	@Column(name="contact_place")
     private String contactPlace;
 	
-	private Set<ContactSchool> schoolsContacts;
+	@OneToMany(targetEntity=ContactSchool.class, mappedBy="candidate", fetch=FetchType.EAGER)
+	private List<ContactSchool> schoolsContacts;
 
 	public String getCandidateId() {
 		return candidateId;
@@ -208,12 +211,11 @@ public class Candidate {
 		this.contactPlace = contactPlace;
 	}
 
-	@OneToMany(mappedBy = "Candidate")
-	public Set<ContactSchool> getSchoolsContacts() {
+	public List<ContactSchool> getSchoolsContacts() {
 		return schoolsContacts;
 	}
 
-	public void setSchoolsContacts(Set<ContactSchool> schoolsContacts) {
+	public void setSchoolsContacts(List<ContactSchool> schoolsContacts) {
 		this.schoolsContacts = schoolsContacts;
 	}
 }

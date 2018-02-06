@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.javahelps.restservice.entity.Candidate;
 import com.javahelps.restservice.repository.CandidateRepository;
+import com.javahelps.restservice.repository.ContactSchoolRepository;
 
 import javassist.tools.web.BadHttpRequest;
 
@@ -23,6 +24,7 @@ public class CandidateController {
 
 	@Autowired
     private CandidateRepository repository;
+	private ContactSchoolRepository repositoryContactSchool;
 
     @GetMapping
     public Iterable<Candidate> findAll() {
@@ -36,7 +38,10 @@ public class CandidateController {
     
     @PostMapping(consumes = "application/json")
     public void create(@RequestBody List<Candidate> candidats) {
-        repository.save(candidats);
+    	repository.save(candidats);
+        for (Candidate candidat : candidats) {
+        	repositoryContactSchool.save(candidat.getSchoolsContacts());
+        }
     }
 
     @DeleteMapping(path = "/{candidate_id}")
