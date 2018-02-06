@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import com.javahelps.restservice.entity.ContactSchool;
+import com.javahelps.restservice.entity.Formation;
 
 @RestResource(exported = false)
-public interface ContactSchoolRepository extends JpaRepository<ContactSchool, String> {
+public interface FormationRepository extends JpaRepository<Formation, String> {
 
-	List<ContactSchool> findAllByCandidate(String candidate_id);
+	List<Formation> findAllByBusinessSector(String business_sector_id);
 }

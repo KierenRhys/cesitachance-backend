@@ -14,7 +14,7 @@ import com.javahelps.restservice.entity.ContactSchool;
 import com.javahelps.restservice.repository.ContactSchoolRepository;
 
 @RestController
-@RequestMapping(path = "/contact_school")
+@RequestMapping(path = "/contact-school")
 public class ContactSchoolController {
 
 	@Autowired

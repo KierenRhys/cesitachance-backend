@@ -3,6 +3,7 @@ package com.javahelps.restservice.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -72,7 +73,7 @@ public class Candidate {
 	@Column(name="contact_place")
     private String contactPlace;
 	
-	@OneToMany(targetEntity=ContactSchool.class, mappedBy="candidate", fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=ContactSchool.class, mappedBy="candidate", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<ContactSchool> schoolsContacts;
 
 	public String getCandidateId() {
