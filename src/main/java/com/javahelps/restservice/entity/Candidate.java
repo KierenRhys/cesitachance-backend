@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -75,6 +77,10 @@ public class Candidate {
 	
 	@OneToMany(targetEntity=ContactSchool.class, mappedBy="candidate", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<ContactSchool> schoolsContacts;
+	
+	@ManyToMany
+    @JoinTable(name="candidate_formation")
+	public List<Formation> formations;
 
 	public String getCandidateId() {
 		return candidateId;
@@ -218,5 +224,21 @@ public class Candidate {
 
 	public void setSchoolsContacts(List<ContactSchool> schoolsContacts) {
 		this.schoolsContacts = schoolsContacts;
+	}
+
+	public void setCandidateBirthdate(Date candidateBirthdate) {
+		this.candidateBirthdate = candidateBirthdate;
+	}
+
+	public void setCandidateLastSchool(String candidateLastSchool) {
+		this.candidateLastSchool = candidateLastSchool;
+	}
+	
+	public List<Formation> getFormations() {
+		return formations;
+	}
+
+	public void setFormations(List<Formation> formations) {
+		this.formations = formations;
 	}
 }
