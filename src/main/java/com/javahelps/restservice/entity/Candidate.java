@@ -55,6 +55,9 @@ public class Candidate {
 	@Column(name="candidate_formation")
     private String candidateFormation;
 	
+	@Column(name="candidat_degree")
+	private String candidateDegree;
+	
 	@Column(name="candidate_last_school")
     private String candidateLastSchool;
 	
@@ -168,6 +171,14 @@ public class Candidate {
 
 	public void setCandidateFormation(String candidateFormation) {
 		this.candidateFormation = candidateFormation;
+	}
+
+	public String getCandidateDegree() {
+		return candidateDegree;
+	}
+
+	public void setCandidateDegree(String candidateDegree) {
+		this.candidateDegree = candidateDegree;
 	}
 
 	public String getCandidateLastSchool() {
