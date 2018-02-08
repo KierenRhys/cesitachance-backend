@@ -26,26 +26,47 @@ public class BusinessSector {
 	@OneToMany(targetEntity=Formation.class, mappedBy="businessSector", fetch=FetchType.EAGER)
 	private List<Formation> formations;
 
+	/**
+	 * @return the business sector's id
+	 */
 	public Integer getBusinessSectorId() {
 		return businessSectorId;
 	}
 
+	/**
+	 * Set a business sector's id
+	 * @param businessSectorId
+	 */
 	public void setBusinessSectorId(Integer businessSectorId) {
 		this.businessSectorId = businessSectorId;
 	}
 
+	/**
+	 * @return the business sector's name
+	 */
 	public String getBusinessSectorName() {
 		return businessSectorName;
 	}
 
+	/**
+	 * Set a business sector's name
+	 * @param businessSectorName
+	 */
 	public void setBusinessSectorName(String businessSectorName) {
 		this.businessSectorName = businessSectorName;
 	}
 
+	/**
+	 * @return the business sector's formations
+	 */
 	public List<Formation> getFormations() {
 		return formations;
 	}
 
+	/**
+	 * Set a business sector's formations
+	 * @param formations
+	 */
 	public void setFormations(List<Formation> formations) {
 		this.formations = formations;
 	}

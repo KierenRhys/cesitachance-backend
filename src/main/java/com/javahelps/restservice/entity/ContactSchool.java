@@ -25,26 +25,47 @@ public class ContactSchool {
 	@Column(name="school_name")
     private String schoolName;
 
+	/**
+	 * @return the contact school's id
+	 */
 	public Integer getContactSchoolId() {
 		return contactSchoolId;
 	}
 
+	/**
+	 * Set a contact school's id
+	 * @param contactSchoolId
+	 */
 	public void setContactSchoolId(Integer contactSchoolId) {
 		this.contactSchoolId = contactSchoolId;
 	}
 	
+	/**
+	 * @return the contact school's candidate
+	 */
 	public Candidate getCandidate() {
 		return candidate;
 	}
 
+	/**
+	 * Set a contact school's candidate
+	 * @param candidate
+	 */
 	public void setCandidate(Candidate candidate) {
 		this.candidate = candidate;
 	}
 
+	/**
+	 * @return the contact school's name
+	 */
 	public String getSchoolName() {
 		return schoolName;
 	}
 
+	/**
+	 * Set acontact school's name
+	 * @param candidateId
+	 */
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}

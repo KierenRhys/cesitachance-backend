@@ -18,16 +18,19 @@ public class FormationController {
 	@Autowired
     private FormationRepository repository;
 
+	// GET all formations
 	@GetMapping
     public Iterable<Formation> findAll() {
         return repository.findAll();
     }
 
+	// GET one formation by ID
 	@GetMapping(path = "/{formation_id}")
     public Formation find(@PathVariable("formation_id") String formation_id) {
         return repository.findOne(formation_id);
     }
 	
+	// GET all formations by business sector
 	@GetMapping(path = "/{business_sector_id}")
     public List<Formation> findAllByBusinessSector(@PathVariable("business_sector_id") String business_sector_id) {
         return repository.findAllByBusinessSector(business_sector_id);
