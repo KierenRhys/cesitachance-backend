@@ -1,14 +1,11 @@
 package com.javahelps.restservice.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,12 +21,12 @@ public class Formation {
 	@Column(name="formation_name")
 	private String formationName;
 	
+	@Column(name="formation_initials")
+	private String formationInitials;
+	
 	@ManyToOne
 	@JoinColumn(name = "business_sector_id")
     private BusinessSector businessSector;
-	
-	@ManyToMany(targetEntity=Candidate.class, mappedBy="formations")
-	private List<Candidate> candidates;
 
 	public Integer getFormationId() {
 		return formationId;
@@ -55,13 +52,11 @@ public class Formation {
 		this.businessSector = businessSector;
 	}
 
-	public List<Candidate> getCandidates() {
-		return candidates;
+	public String getFormationInitials() {
+		return formationInitials;
 	}
 
-	public void setCandidates(List<Candidate> candidates) {
-		this.candidates = candidates;
+	public void setFormationInitials(String formationInitials) {
+		this.formationInitials = formationInitials;
 	}
-	
-	
 }

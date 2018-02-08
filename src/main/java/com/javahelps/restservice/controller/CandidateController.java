@@ -39,16 +39,28 @@ public class CandidateController {
         return repository.findOne(candidate_id);
     }
     
-    @PostMapping(consumes = "application/json")
-    public void create(@RequestBody List<Candidate> candidats) {
-    	repository.save(candidats);
-        for (Candidate candidat : candidats) {
-        	for (ContactSchool contact : candidat.getSchoolsContacts()) {
+    @GetMapping(path = "/{candidate_id}/interests")
+    public String findInterests(@PathVariable("candidate_id") String candidate_id) {
+    	String interests = repository.findOne(candidate_id).getInterests();
+    	return interests;
+    }
+    
+	@PostMapping(path= "/sync", consumes = "application/json")
+    public Iterable<Candidate> create(@RequestBody List<Candidate> candidates) {
+        for (Candidate candidate : candidates) {
+        	createOne(candidate);
+        }
+        return repository.findAll();
+    }
+	
+	@PostMapping(consumes = "application/json")
+    public void createOne(@RequestBody Candidate candidate) {
+    	repository.save(candidate);
+    	for (ContactSchool contact : candidate.getSchoolsContacts()) {
         		ContactSchool _contact = new ContactSchool();
-        		_contact.setCandidate(candidat);
+        		_contact.setCandidate(candidate);
         		_contact.setSchoolName(contact.getSchoolName());
         		repositoryContactSchool.save(_contact);
-        	}
         }
     }
 
