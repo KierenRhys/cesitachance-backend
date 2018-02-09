@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="candidate")
 public class Candidate {
@@ -70,6 +72,7 @@ public class Candidate {
 	@Column(name="contact_place")
     private String contactPlace;
 	
+	@JsonManagedReference
 	@OneToMany(targetEntity=ContactSchool.class, mappedBy="candidate", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<ContactSchool> schoolsContacts;
 	
