@@ -7,5 +7,7 @@ import com.javahelps.restservice.entity.BusinessSector;
 
 @RestResource(exported = false)
 public interface BusinessSectorRepository extends JpaRepository<BusinessSector, String> {
-
+	/*
+	 * Interface for business sector controller
+	 */
 }

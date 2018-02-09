@@ -7,5 +7,7 @@ import com.javahelps.restservice.entity.Candidate;
 
 @RestResource(exported = false)
 public interface CandidateRepository extends JpaRepository<Candidate, String> {
-
+	/*
+	 * Interface for candidate controller
+	 */
 }

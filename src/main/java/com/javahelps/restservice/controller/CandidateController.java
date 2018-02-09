@@ -30,18 +30,21 @@ public class CandidateController {
 	@Autowired
 	private ContactSchoolRepository repositoryContactSchool;
 
+	// GET all candidates
     @GetMapping
     @CrossOrigin
     public List<Candidate> findAll() {
         return repository.findAll();
     }
 
+    // GET one candidate by ID
     @CrossOrigin
     @GetMapping(path = "/{candidate_id}")
     public Candidate find(@PathVariable("candidate_id") String candidate_id) {
         return repository.findOne(candidate_id);
     }
     
+    // GET interests from one candidate by ID
     @CrossOrigin
     @GetMapping(path = "/{candidate_id}/interests")
     public String findInterests(@PathVariable("candidate_id") String candidate_id) {
@@ -49,6 +52,7 @@ public class CandidateController {
     	return interests;
     }
     
+    // POST a list of candidates
     @CrossOrigin
 	@PostMapping(path= "/sync", consumes = "application/json")
     public Iterable<Candidate> create(@RequestBody List<Candidate> candidates) {
@@ -58,6 +62,7 @@ public class CandidateController {
         return repository.findAll();
     }
 	
+	// POST one candidate
     @CrossOrigin
 	@PostMapping(consumes = "application/json")
     public void createOne(@RequestBody Candidate candidate) {
@@ -70,12 +75,14 @@ public class CandidateController {
         }
     }
 
+	// DELETE one candidate by ID
     @CrossOrigin
     @DeleteMapping(path = "/{candidate_id}")
     public void delete(@PathVariable("candidate_id") String candidate_id) {
         repository.delete(candidate_id);
     }
 
+    // UPDATE one candidate by ID
     @CrossOrigin
     @PutMapping(path = "/{candidate_id}")
     public Candidate update(@PathVariable("candidate_id") String candidate_id, @RequestBody Candidate candidate) throws BadHttpRequest {

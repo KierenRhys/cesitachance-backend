@@ -20,11 +20,13 @@ public class ContactSchoolController {
 	@Autowired
     private ContactSchoolRepository repository;
 
+	// POST a list of contacts school
 	@PostMapping(consumes = "application/json")
-    public void create(@RequestBody List<ContactSchool> contacts_scchool) {
-		repository.save(contacts_scchool);
+    public void create(@RequestBody List<ContactSchool> contacts_school) {
+		repository.save(contacts_school);
     }
 
+	// GET all the contacts by candidate
     @GetMapping(path = "/{candidate_id}")
     public List<ContactSchool> findAllByCandidate(@PathVariable("candidate_id") String candidate_id) {
         return repository.findAllByCandidate(candidate_id);

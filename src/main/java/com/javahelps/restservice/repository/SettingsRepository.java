@@ -7,5 +7,7 @@ import com.javahelps.restservice.entity.Settings;
 
 @RestResource(exported = false)
 public interface SettingsRepository extends JpaRepository<Settings, String> {
-
+	/*
+	 * Interface for settings controller
+	 */
 }

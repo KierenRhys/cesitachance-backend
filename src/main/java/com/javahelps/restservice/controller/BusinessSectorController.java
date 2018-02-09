@@ -16,11 +16,13 @@ public class BusinessSectorController {
 	@Autowired
     private BusinessSectorRepository repository;
 
+	// GET all business sectors
 	@GetMapping
     public Iterable<BusinessSector> findAll() {
         return repository.findAll();
     }
 
+	// GET one business sector by ID
 	@GetMapping(path = "/{business_sector_id}")
     public BusinessSector find(@PathVariable("business_sector_id") String business_sector_id) {
         return repository.findOne(business_sector_id);
